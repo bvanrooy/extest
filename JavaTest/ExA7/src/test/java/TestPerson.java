@@ -1,4 +1,5 @@
-import be.abis.exa6.model.Person;
+import be.abis.exa7.exception.PersonShouldBeAdultException;
+import be.abis.exa7.model.Person;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,7 +19,7 @@ public class TestPerson {
         person = new Person(2,"John","Doe", LocalDate.of(1978, 8, 10));
     }
     @Test
-    public void ageOfPersonShouldBe42(){
+    public void ageOfPersonShouldBe42() throws PersonShouldBeAdultException {
 
         int age = person.calculateAge();
 
@@ -26,7 +27,7 @@ public class TestPerson {
     }
 
     @Test
-    public void ageOfPersonShouldBe42HamCrest(){
+    public void ageOfPersonShouldBe42HamCrest() throws PersonShouldBeAdultException {
 
         int age = person.calculateAge();
 
@@ -39,5 +40,12 @@ public class TestPerson {
         String result = person.toString();
 
         assertThat(result,startsWith("Person"));
+    }
+
+    @Test(expected  = PersonShouldBeAdultException.class)
+    public void personWithMinorAgeThrowsException() throws PersonShouldBeAdultException {
+
+        person.setBirthDay(LocalDate.of(2020, 8, 10));
+        int age = person.calculateAge();
     }
 }
