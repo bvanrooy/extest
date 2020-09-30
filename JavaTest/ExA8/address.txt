@@ -7,3 +7,5 @@ Address{street='street', nr='nr', zipCode='3000', town='leuven', country='belgiu
 Address{street='street', nr='nr', zipCode='3000', town='leuven', country='belgium', countryCode='BE'}
 Address{street='street', nr='nr', zipCode='3000', town='leuven', country='belgium', countryCode='BE'}
 Address{street='street', nr='nr', zipCode='3000', town='leuven', country='belgium', countryCode='BE'}
+Address{street='street', nr='nr', zipCode='3000', town='leuven', country='belgium', countryCode='BE'}
+Address{street='street', nr='nr', zipCode='3000', town='leuven', country='belgium', countryCode='BE'}
