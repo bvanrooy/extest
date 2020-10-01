@@ -6,7 +6,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         TestAddress.class,
         TestPerson.class,
-        TestCompany.class
+        TestCompany.class,
+        TestPaymentService.class
 })
 
 public class TestSuite {
