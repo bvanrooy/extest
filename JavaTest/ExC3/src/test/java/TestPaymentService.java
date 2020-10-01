@@ -28,23 +28,27 @@ public class TestPaymentService {
     private PaymentService paymentService;
 
     @Mock
+    private Company company;
+
+    @InjectMocks
     private Person person;
 
     @Before
     public void setup(){
 
         paymentService = new AbisPaymentService();
-        }
+        when(company.calculateTaxToPay()).thenReturn(51.0);
+    }
 
     @Test(expected = SalaryTooLowException.class)
     public void payingUnder1500EuroShouldThrowAnException() throws SalaryTooLowException {
-        when(person.calculateNetSalary()).thenThrow(SalaryTooLowException.class);
+        person.setGrossSalary(1500);
         paymentService.paySalary(person);
     }
 
     @Test
     public void testPaySalary() throws SalaryTooLowException {
-        when(person.calculateNetSalary()).thenReturn(4000.0);
+        person.setGrossSalary(6000);
         System.setOut(new PrintStream(outContent));
         paymentService.paySalary(person);
         assertThat(outContent.toString(),startsWith("Paying"));
