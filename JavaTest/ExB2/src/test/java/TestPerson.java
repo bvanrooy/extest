@@ -1,9 +1,6 @@
 import be.abis.exb2.exception.PersonShouldBeAdultException;
 import be.abis.exb2.model.Person;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.time.LocalDate;
 
@@ -25,25 +22,6 @@ public class TestPerson {
     }
 
 
-    @Test
-    @DisplayName("Person should be 42")
-    @Tag("age")
-    public void ageOfPersonShouldBe42() throws PersonShouldBeAdultException {
-
-        int age = person.calculateAge();
-
-        assertEquals(42,age);
-    }
-
-    @Test
-    @DisplayName("Person should be 42 (hamcrest version)")
-    @Tag("age")
-    public void ageOfPersonShouldBe42HamCrest() throws PersonShouldBeAdultException {
-
-        int age = person.calculateAge();
-
-        assertThat( 42, comparesEqualTo(age));
-    }
 
     @Test
     @DisplayName("The tostring should start with the word Person")
@@ -54,12 +32,41 @@ public class TestPerson {
         assertThat(result,startsWith("Person"));
     }
 
-    @Test
-    @DisplayName("Test if the person is an adult")
-    @Tag("age")
-    public void personWithMinorAgeThrowsException() throws PersonShouldBeAdultException {
 
-        person.setBirthDay(LocalDate.of(2020, 8, 10));
-        assertThrows(PersonShouldBeAdultException.class,() ->person.calculateAge());
+
+
+    @Nested
+    @DisplayName("Age related tests")
+    class AgeRelatedTest{
+
+        @Test
+        @DisplayName("Test if the person is an adult")
+        @Tag("age")
+        public void personWithMinorAgeThrowsException() throws PersonShouldBeAdultException {
+
+            person.setBirthDay(LocalDate.of(2020, 8, 10));
+            assertThrows(PersonShouldBeAdultException.class,() ->person.calculateAge());
+        }
+
+        @Test
+        @DisplayName("Person should be 42")
+        @Tag("age")
+        public void ageOfPersonShouldBe42() throws PersonShouldBeAdultException {
+
+            int age = person.calculateAge();
+
+            assertEquals(42,age);
+        }
+
+        @Test
+        @DisplayName("Person should be 42 (hamcrest version)")
+        @Tag("age")
+        public void ageOfPersonShouldBe42HamCrest() throws PersonShouldBeAdultException {
+
+            int age = person.calculateAge();
+
+            assertThat( 42, comparesEqualTo(age));
+        }
+
     }
 }
