@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ExA1" />
+        <module name="ExB2" />
         <module name="ExB1" />
         <module name="ExA3" />
         <module name="ExA2" />
@@ -27,6 +28,7 @@
       <module name="ExA7" target="1.8" />
       <module name="ExA8" target="1.8" />
       <module name="ExB1" target="1.8" />
+      <module name="ExB2" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

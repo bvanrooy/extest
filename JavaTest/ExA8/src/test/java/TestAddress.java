@@ -22,6 +22,10 @@ public class TestAddress {
     @Before
     public void setup(){
         addres = new Address("street","nr","3000","leuven","belgium","BE");
+        File addressFile = new File(ADDRESSFILENAME);
+        if(!addressFile.canWrite()){
+            addressFile.setWritable(true);
+        }
     }
     @Test
     public void belgianZipCodeShouldBeNumeric(){
@@ -68,5 +72,14 @@ public class TestAddress {
         }
 
         assertEquals(addressFromFile, addres.toString());
+    }
+
+    @Test(expected = IOException.class)
+    public void writeToFileShouldThrowExceptionWhenFileIsReadOnly() throws IOException {
+        File addressFile = new File(ADDRESSFILENAME);
+        if(addressFile.canWrite()){
+            addressFile.setWritable(false);
+        }
+        addres.writeToFile();
     }
 }

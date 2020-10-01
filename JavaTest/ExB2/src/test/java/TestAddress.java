@@ -1,4 +1,4 @@
-import be.abis.exb1.model.Address;
+import be.abis.exb2.model.Address;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +26,7 @@ public class TestAddress {
             addressFile.setWritable(true);
         }
     }
+
     @Test
     public void belgianZipCodeShouldBeNumeric(){
 
@@ -70,6 +71,7 @@ public class TestAddress {
 
         assertEquals(addressFromFile, addres.toString());
     }
+
 
 
     @Test()
