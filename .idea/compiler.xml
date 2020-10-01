@@ -10,6 +10,7 @@
         <module name="ExB2" />
         <module name="ExB1" />
         <module name="ExA3" />
+        <module name="ExB4" />
         <module name="ExA2" />
         <module name="ExB3" />
         <module name="ExA5" />
@@ -31,6 +32,7 @@
       <module name="ExB1" target="1.8" />
       <module name="ExB2" target="1.8" />
       <module name="ExB3" target="1.8" />
+      <module name="ExB4" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
